@@ -41,8 +41,14 @@ int main(int argc, char *argv[])
     float miss_rate = (float) sim.cache_misses / (float) sim.num_mem_refs;
 
     // print results
-    printf("mem refs: %ld, hits: %ld, misses: %ld\n", sim.num_mem_refs, sim.cache_hits, sim.cache_misses);
-    printf("miss rate: %f%% \n", miss_rate * 100.0);
+    printf("mem refs: %ld\n"
+           "hits: %ld\n"
+           "misses: %ld\n"
+           "miss rate: %f%% \n",
+           sim.num_mem_refs,
+           sim.cache_hits,
+           sim.cache_misses,
+           miss_rate * 100.0);
 
     return 0;
 }

@@ -44,9 +44,9 @@ int load_trace(char *file, sim_state *sim)
     if (!sim->trace_file) {
         printf("could not open file %s\n", file);
         success = FALSE;
+    } else {
+        printf("opened file %s\n", file);
     }
-
-    printf("opened file %s\n", file);
 
     return success;
 }
@@ -171,7 +171,7 @@ void process_trace_element(sim_state *s, trace_elem *e)
 
     // no invalid blocks in set, randomly replace a valid one
     if (!block_added) {
-        int block_number = rand() % 2;
+        int block_number = rand() % s->cache_mem.set_associativity;
         s->cache_mem.blocks[set_number][block_number].tag = tag;
     }
 
