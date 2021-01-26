@@ -8,10 +8,6 @@
 #define FALSE 0
 #define ERROR -1
 
-#define CACHE_SIZE_BYTES (1024)
-#define BLOCK_SIZE_BYTES 64
-#define SET_ASSOCIATIVITY 4
-
 typedef struct trace_elem trace_elem;
 typedef struct cache_block cache_block;
 typedef struct cache cache;
@@ -59,7 +55,7 @@ struct sim_state {
     cache cache_mem;
 };
 
-void init_sim(sim_state *sim);
+void init_sim(sim_state *sim, int capacity, int block_size, int associativity);
 int load_trace(char *file, sim_state *sim);
 void print_element(trace_elem *e);
 int next(sim_state *s, trace_elem *e);

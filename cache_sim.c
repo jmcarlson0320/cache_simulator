@@ -4,13 +4,13 @@
 #include <stdlib.h>
 #include <time.h>
 
-void init_sim(sim_state *sim)
+void init_sim(sim_state *sim, int capacity, int block_size, int associativity)
 {
-    sim->cache_mem.capacity = CACHE_SIZE_BYTES;
-    sim->cache_mem.block_size = BLOCK_SIZE_BYTES;
-    sim->cache_mem.num_blocks = CACHE_SIZE_BYTES / BLOCK_SIZE_BYTES;
-    sim->cache_mem.set_associativity = SET_ASSOCIATIVITY;
-    sim->cache_mem.num_sets = sim->cache_mem.num_blocks / SET_ASSOCIATIVITY;
+    sim->cache_mem.capacity = capacity;
+    sim->cache_mem.block_size = block_size;
+    sim->cache_mem.num_blocks = capacity / block_size;
+    sim->cache_mem.set_associativity = associativity;
+    sim->cache_mem.num_sets = sim->cache_mem.num_blocks / associativity;
     sim->cache_mem.num_valid = 0;
     
     // allocate cache
